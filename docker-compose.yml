@@ -1,0 +1,25 @@
+---
+version: "3.7"
+services:
+
+  s6r-db:
+    image: mariadb:10.4-bionic
+    restart: always
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "127.0.0.1:33012:3306"
+    container_name: s6r-db
+    environment:
+      MYSQL_ROOT_PASSWORD: "Almafa123"
+      MYSQL_DATABASE: "s6r"
+
+  s6r-graphite:
+    image: graphiteapp/graphite-statsd
+    restart: always
+    container_name: s6r-graphite
+    ports:
+      - "127.0.0.1:888:80"
+      - "127.0.0.1:2003-2004:2003-2004"
+      - "127.0.0.1:2023-2024:2023-2024"
+      - "127.0.0.1:8125:8125"
+      - "127.0.0.1:8126:8126"

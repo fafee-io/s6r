@@ -1,0 +1,16 @@
+---
+spring:
+  application:
+    name: "spring-6r-demo"
+  r2dbc:
+    url: "r2dbc:mariadb://localhost:33012/s6r"
+    username: "root"
+    password: "Almafa123"
+  liquibase:
+    enabled: true
+    drop-first: false
+    change-log: "classpath:liquibase/init_master.yml"
+    url: "jdbc:mariadb://localhost:33012/s6r"
+    user: "root"
+    password: "Almafa123"
+
